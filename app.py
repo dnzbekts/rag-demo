@@ -1,17 +1,29 @@
-###
 import os
 from typing import List
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import DirectoryLoader, UnstructuredMarkdownLoader
 from langchain_community.vectorstores import Chroma
 from langchain_ollama import OllamaEmbeddings, OllamaLLM
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
 from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langgraph.graph import END, StateGraph
+from typing_extensions import TypedDict
 
 # --- Veri Hazırlığı ---
-loader = TextLoader("bilgi.txt")
-documents = loader.load()
+print("Dokümanlar yükleniyor...")
+# docs/ dizini altındaki markdown ve text dosyalarını yükle
+loader = DirectoryLoader(
+    "./docs",
+    glob=["**/*.md", "**/*.txt"],
+    loader_cls=UnstructuredMarkdownLoader
+)
+docs = loader.load()
+
+# Metinleri parçalara ayır
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+documents = text_splitter.split_documents(docs)
+print(f"{len(documents)} parça doküman oluşturuldu.")
 
 # Embedding ve Vektör Veritabanı
 print("Embedding modeli yükleniyor ve vektör veritabanı oluşturuluyor...")
@@ -89,12 +101,10 @@ prompt_answer = PromptTemplate(
 answer_grader = prompt_answer | llm | JsonOutputParser()
 
 # --- Graph State ---
-from typing_extensions import TypedDict
-
 class GraphState(TypedDict):
     question: str
     generation: str
-    documents: List[str]
+    documents: List[Document]
 
 # --- Nodes ---
 
@@ -152,14 +162,13 @@ def check_hallucinations(state):
     generation = state["generation"]
     
     if generation == "Bu konuda bilgi bulamadım.":
-        return "useful" # Bypassing checks if no info
+        return "useful"
 
     score = hallucination_grader.invoke({"documents": documents, "generation": generation})
     grade = score['score']
     
     if grade == "yes":
         print("---DECISION: GENERATION IS GROUNDED IN DOCUMENTS---")
-        # Answer addresses question check removed as it was yielding false negatives.
         return "useful"
     else:
         print("---DECISION: GENERATION IS NOT GROUNDED IN DOCUMENTS---")
@@ -207,12 +216,8 @@ def check_hallucination_logic(state):
     if result == "useful":
         return END
     else:
-        # If hallucinated or not useful, we could regenerate or search web, 
-        # but user specifically asked to say "bu konuda bilgi bulamadım".
-        # So we hijack the state to set the message.
         return "reset_to_no_info"
 
-# We need a small node to reset the answer if it fails checks, because conditional edges can't modify state directly
 def set_no_info(state):
     print("---SETTING FINAL ANSWER TO 'BILGI BULAMADIM'---")
     return {"generation": "Bu konuda bilgi bulamadım."}
@@ -233,7 +238,7 @@ app = workflow.compile()
 
 # --- Main Loop ---
 if __name__ == "__main__":
-    print("\n--- LangGraph RAG Hazır! Sorularınızı sorabilirsiniz (Çıkmak için 'q' veya 'exit' yazın) ---")
+    print("\n--- RAG Hazır! Sorularınızı sorabilirsiniz (Çıkmak için 'q' veya 'exit' yazın) ---")
     while True:
         query = input("\nSoru: ")
         if query.lower() in ["q", "exit", "quit", "çıkış"]:
@@ -243,11 +248,9 @@ if __name__ == "__main__":
             continue
 
         inputs = {"question": query}
-        # invoke returns the final state
         result = app.invoke(inputs)
         
         print("\n--- YANIT ---")
-        # Handle cases where we ended early due to no context
         if "generation" in result:
              print(result["generation"])
         else:

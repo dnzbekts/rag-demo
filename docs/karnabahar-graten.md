@@ -1,0 +1,11 @@
+## Karnabahar Graten Tarifi
+
+Graten, Fransız mutfağından dünya mutfağına geçmiş, fırınlanan soslu yemeklere verilen genel isim.Karnabahar gratenise haşlanmış karnabaharın beşamel sosla harmanlandığı, fırında peynirle kızartılarak yapılansebzeyemeği.Mutfaklarımızın vazgeçilmez sebzelerinden biri olan karnabahar,sağlıklı ve lezzetliyemeklerin başrol oyuncusu olmaya devam ediyor da diyebiliriz. Bugün sizlere, karnabaharın lezzetini doruklarda yaşayabileceğiniz nefis birtarifsunuyoruz:Karnabahar Graten!Butarif, hem karnabaharın hafif ve sağlıklı yapısını korurken hem de birbirinden lezzetli malzemelerle buluşarak sofralarınıza özel bir tat sunuyor. İçindeki kıyma,soğan, salça ve baharatlarlahazırlanan kıymalısos, karnabaharın yanında harika bir lezzet dengesi sağlıyor.Üzerini kaplayan beşamel sos ve enfes kaşar peyniri rendesi ise gratenin kırmızı halısını seriyor. Karnabahar Graten, özellikle karnabaharı sevmeyenlerin bile favori tariflerinden biri olmaya aday. Şimdi, bu lezzet dolu karnabahar graten tarifini daha yakından keşfetmeye ne dersiniz? Adım adım yapılışı aşağıda sizleri bekliyor. O halde haydi mutfağa!
+
+## Malzemeler
+
+Karnabahar Graten Tarifi İçin MalzemelerKarnabahar Graten İçin:1adet küçük boykarnabahar250gramkıyma1adetsoğan2yemek kaşığısalça1tatlı kaşığıtuz1çay kaşığıkarabiberKarnabahar Graten Beşamel Sosu için:2yemek kaşığıtereyağ2yemek kaşığıun3su bardağısüt1tutamtuz1tutamkarabiber1tutammuskat cevizi rendesi1su bardağırendelenmiş kaşar peyniri
+
+## Hazırlanışı
+
+Karnabahar Graten Tarifi Nasıl Yapılır?Karnabaharları çiçeklerine ayırarak haşlayın.Tavada kıymayı kavurun.Ardından yağı ve küp küp doğranmış soğanları ilave edin.Salçayı ve bir çay bardağı kadar suyu ilave edin. Baharatlarını ekleyip altını kapatın.Sos için tereyağını eritip unu kavurun. Azar azar sütü ekleyip baharatlarını ilave edin.Fırın kabınıza önce haşladığınız karnabaharı, ardından kıymalı sosu son olarak beşamel sosu ilave edin.Kaşar peyniri rendesini ekleyip fırına verin. 180 derecede kaşar peyniri eriyene kadar pişirin.Karnabahar graten tarifiniz hazır. Afiyetler olsun!
